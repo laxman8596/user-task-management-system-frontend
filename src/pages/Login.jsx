@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useAuth } from '../context/AuthContext';
-import axios from 'axios';
+import axios from '../utils/axiosConfig';
 
 const Login = () => {
   const { setAuth } = useAuth();

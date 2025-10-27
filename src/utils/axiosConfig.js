@@ -1,7 +1,21 @@
 import axios from 'axios';
 
-// Set base URL from environment variable
-axios.defaults.baseURL = import.meta.env.VITE_API_URL || 'https://mern-user-system-ruddy.vercel.app';
+// Dynamic API URL detection
+const getApiUrl = () => {
+  // Check if running locally (localhost or 127.0.0.1)
+  const isLocal = window.location.hostname === 'localhost' || 
+                  window.location.hostname === '127.0.0.1' ||
+                  window.location.hostname === '';
+  
+  if (isLocal) {
+    return 'http://localhost:5000';
+  } else {
+    return 'https://user-task-management-system-backend-njx9.onrender.com';
+  }
+};
+
+// Set base URL dynamically
+axios.defaults.baseURL = getApiUrl();
 axios.defaults.withCredentials = true;
 
 let isRefreshing = false;
